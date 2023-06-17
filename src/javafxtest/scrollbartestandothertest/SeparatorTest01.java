@@ -9,7 +9,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
+//p50
 public class SeparatorTest01 extends Application {
     public static void main(String[] args) {
         launch(args);
