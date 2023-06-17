@@ -1,0 +1,49 @@
+在java8之后java引入了模块的概念,假如一个src的目录下有module-info文件就代表这是一个模块项目
+jvm会以模块化项目的模式运行,如果没有这个文件就会以非模块化项目运行
+
+java8之后的jdk已经被分散为了一个又一个的模块
+cmd命令:java --list-modules //显示java自带的所有模块
+        java--describe-module 模块名 //显示模块详细信息
+
+模块的语法
+module 模块名{
+    //引入模块(java会自动引入基本模块所以可以不用手动引入)
+    //须知:idea不能直接写引入模块需要右键项目手动导入(日食好像可以)
+    //默认没有传递依赖(即c引入b,b引入a的情况下,c无法使用a模块的包)
+    require 模块名;
+    //启用传递依赖(java9中transitive被public代替,但是应该没人用java9吧...)
+    require transitive 模块名;
+
+    //公开自身模块中的某个包,其他模块只要require就可以使用
+    exports 包名;
+    //只向某个模块公开自身模块中的某个包,其他模块即使require也不可以使用
+    exports 包名 to 模块名,模块名...;
+
+    //允许某个模块被反射
+    //上面的exports同样也会让模块允许反射但是当模块中的类不是public进行修饰的时候进行反射会报错
+    //使用opens将无视类是否public一律允许反射(同样也可以使用to关键字)
+    opens 模块名;
+}
+
+聚合模块:甲骨文根据传递依赖的特性开发一个模块java.se这个模块全是别的模块
+    当引入java.se模块后等于引入了
+    java.compiler
+    java.datatransfer
+    java.desktop
+    java.instrument
+    java.logging
+    java.management
+    java.management.rmi
+    java.naming
+    java.net.http
+    java.prefs
+    java.rmi
+    java.scripting
+    java.security.jgss
+    java.security.sasl
+    java.sql
+    java.sql.rowset
+    java.transaction.xa
+    java.xml
+    java.xml.crypto
+
