@@ -1,11 +1,11 @@
-package javafxtest;
+package javafxtest.scrollbartestandothertest;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-//默认的模板
-public class def extends Application {
+
+public class SeparaporTest01 extends Application {
     public static void main(String[] args) {
         launch(args);
     }
