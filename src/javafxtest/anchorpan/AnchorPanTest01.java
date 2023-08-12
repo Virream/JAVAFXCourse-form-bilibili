@@ -27,7 +27,7 @@ public class AnchorPanTest01 extends Application {
         //设置anchorPlan的内边距(将anchorPlan的原点向x和y移动10个像素)
         anchorPane.setPadding(new Insets(10));
 
-        //设置相对于父控件anchorPane的位置
+        //设置node相对于父控件(anchorPane)的位置
         //设置上边框距离父控件10个像素,下面以此类推
         anchorPane.setTopAnchor(button1,10.0);//这是一个静态方法不建议这样调用
         AnchorPane.setLeftAnchor(button1,10.0);//建议这样调用
