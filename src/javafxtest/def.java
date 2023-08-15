@@ -13,7 +13,7 @@ public class def extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         AnchorPane anchorPane = new AnchorPane();
-        anchorPane.setStyle("-fx-background-color:#231120");
+        anchorPane.setStyle("-fx-background-color:#101010");
 
 
         Scene scene = new Scene(anchorPane);
