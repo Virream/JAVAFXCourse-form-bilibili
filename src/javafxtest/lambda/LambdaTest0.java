@@ -7,17 +7,15 @@ import java.util.function.IntPredicate;
 
 public class LambdaTest0 {
     /*
-    *   在学习lambda表达式之前要先理解函数式编程
-    * 函数式编程主要关注对数据进行了什么样的操作,不关注数据类型,对象等
-    *  优点:易读,简洁,易于并发编程
+    * 函数式接口:有且只有一个抽象方法的接口就是函数式接口
     *
     * 在java8及以后支持lambda表达式
-    * 主要是对某些匿名内部类的写法进行简化
+    * java的lambda表达式只能对new函数式接口时所需的匿名内部类使用
     *
     * java.util.function下是java自带的函数式接口
     *
     * 基本格式:
-    *   (参数列表)->{代码}
+    *   (被重写方法的参数列表)->{代码}
     * */
     public static void main(String[] args) {
         //示例
