@@ -26,6 +26,7 @@ public class SimpleListPropertyTest extends Application {
         //接收的是一个可观察的list
         SimpleListProperty<String> stringSimpleListProperty = new SimpleListProperty<String>(stringObservableList);
         //监听事件
+        //监听列表是否被更改
         stringSimpleListProperty.addListener(new ChangeListener<ObservableList<String>>() {
             @Override
             public void changed(ObservableValue<? extends ObservableList<String>> observable,
