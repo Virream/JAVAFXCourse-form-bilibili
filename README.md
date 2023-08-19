@@ -1,7 +1,7 @@
 # JAVAFXCourse-form-bilibili
 这是一个个人仓库,用于储存本人在bilibili学习的javafx的代码
 相较于课程中的视频的代码添加了注释
-课程中使用的是Eclipse但是本人更喜欢IDEA所以这是一个IDEA工程,但同样是一个普通类型的工程需要自己导入JavaFx的包
+课程中使用的是Eclipse但是本人更喜欢IDEA所以这是一个IDEA工程,但同样是一个普通类型的工程需要自己导入JavaFx的SDK,如果你不知道如何配置SDK请查看src/javafxtest下的readme.txt
 
 学习的课程的作者主页https://space.bilibili.com/5096022
 课程的地址https://www.bilibili.com/video/BV1fW41167RP
