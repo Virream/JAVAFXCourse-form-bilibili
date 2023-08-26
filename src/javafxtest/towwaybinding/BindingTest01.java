@@ -1,10 +1,6 @@
 package javafxtest.towwaybinding;
 
 import javafx.application.Application;
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -34,7 +30,7 @@ public class BindingTest01 extends Application {
         primaryStage.show();
 
         hBox.setPrefHeight(20);
-        //将HBox的宽和高进行单向绑定
+        //将HBox的宽和窗口的宽进行单向绑定
         hBox.prefWidthProperty().bind(anchorPane.widthProperty());
 
         //将这两个文本框进行双向绑定
