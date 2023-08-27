@@ -3,6 +3,7 @@ package javafxtest.towwaybinding;
 import javafx.beans.binding.IntegerBinding;
 import javafx.beans.binding.NumberBinding;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 //绑定计算和绑定判断
 //p58
@@ -32,11 +33,22 @@ public class BindingCalculateTest01 {
         //IntegerBinding实现了NumberBinding的接口
         IntegerBinding integerBinding = simpleIntegerProperty1.add(100);
 
-        //使用绑定计算的值是实时更新的
+        //使用绑定计算的值(NumberBinding)是实时更新的
+        //使用绑定计算的值会在内部维护的值发生改变时重新计算结果,也就是说对NumberBinding维护的Property使用set()会导致重新计算结果
+        System.out.println(simpleIntegerProperty.get());//原始维护的值是不会变的
         System.out.println(numberBinding.intValue());
         System.out.println(integerBinding.intValue());
-        simpleIntegerProperty1.set(10);//在这里改变了simpleIntegerProperty1的值,下面的结果立马发生了改变
+        simpleIntegerProperty1.set(10);//在这里使用set()改变了simpleIntegerProperty1的值,但是我们并没有对numberBinding和integerBinding重新赋值
+        //下面的结果发生了改变,
+        System.out.println("------------------------------");
+        System.out.println(simpleIntegerProperty.get());
         System.out.println(numberBinding.intValue());
         System.out.println(integerBinding.intValue());
+
+        SimpleStringProperty simpleStringProperty = new SimpleStringProperty("ABC");
+        //SimpleStringProperty在执行判断某个字符是否大于另一个字符等操作使用的是Ascii码进行判断
+
+        simpleStringProperty.isEmpty();//判断内容是否为空(""),除此之外当维护的内容为null时也是true
+        simpleStringProperty.isNull();//判断维护的内容是否为空(null)
     }
 }
