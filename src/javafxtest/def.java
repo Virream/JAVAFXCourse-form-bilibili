@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 //默认的模板
+//如果可以的话还是不要直接复制的好
 public class def extends Application {
     public static void main(String[] args) {
         launch(args);
