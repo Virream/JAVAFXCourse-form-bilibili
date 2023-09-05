@@ -15,7 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-//next:p61
+//next:p62
 //2023年9月6日00:15:01
 //功能需求:有两个文本框,第一个输入索引,第二个输入数据
 //当输入数据后下面展示的列表中的数据会根据索引更改为输入的数据
