@@ -7,7 +7,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.util.Callback;
 //2023年9月12日23:36:50
-//next:p25
+//next:p65
 public class FXCollectionsTest03 {
     public static void main(String[] args) {
         SimpleStringProperty s1 = new SimpleStringProperty("A");
