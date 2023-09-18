@@ -12,6 +12,9 @@ import java.io.FileInputStream;
 import java.net.URL;
 
 //image类的测试
+//不知道为什么我感觉图片有点糊...实际上也确实有点糊,和图片查看器中的样子区别有点大
+//https://blog.csdn.net/u014614038/article/details/116294062或许....和这篇文章在原理上有相通之处
+//测试了一下好像确实越接近原始分辨率越清晰
 public class ImageTest01 extends Application {
     public static void main(String[] args) {
         launch(args);

@@ -23,6 +23,7 @@ public class ImageTest02 extends Application {
 
         URL url1 = getClass().getClassLoader().getResource("res/img2.jpg");
         Image image1 = new Image(url1.toExternalForm(),700,700,true,true);
+        //如果是要加载当前工程下的资源不需要加上file:这里这么写是因为不这么写直接无法编译,无法编译的话就没办法展示监听了
         Image image2 = new Image("file:res/img2.jpeg",700,700,true,true,true);
         System.out.println(image1.getHeight());//获取当前显示的高(异步加载可能会失效)
         System.out.println(image1.getWidth());//获取当前显示的宽(异步加载可能会失效)
