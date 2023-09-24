@@ -85,7 +85,7 @@ public class PixelReaderTest01 extends Application {
         //遍历输出每个像素的ARGB值
         for(int i = 0;i < bytes.length;i = i +4){
             //像素的数据在被放入byte数组中时是以BGRA的顺序装入的(为什么啊???)
-            //源码我看不懂,推测是历史遗留问题,也可能是高位和低位的顺序反转了,也可能像素被转换为了BMP格式,这个格式是以BGR存储颜色信息的....这有点反常
+            //好吧,在获取像素格式时使用的PixelFormat.getByteBgraPreInstance()定义的就是BGRA格式
             int blue = bytes[i] & 0xff;
             int green = bytes[i + 1] & 0xff;
             int red = bytes[i + 2] & 0xff;
