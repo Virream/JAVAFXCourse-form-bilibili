@@ -34,7 +34,7 @@ public class StringImage extends Application {
             for(int j = 0;j < image.getWidth();j++){
                 //getColor接收的参数x,y;代表x坐标轴上的位置,也就是宽所在的轴,y所在的位置也就是高所在的轴
                 int red = (int)(pixelReader.getColor(j,i).getRed() * 255);//所以这里先填宽再填高
-                String data = Leve.getLeve(red);
+                String data = MyLevel.getLeve(red);
                 stringBuffer.append(data);
             }
             stringBuffer.append("\r\n");
@@ -60,7 +60,7 @@ public class StringImage extends Application {
     }
 }
 
-class Leve{
+class MyLevel{
     public static String getLeve(int i){
         int leve = i / 15;
         return switch (leve) {
