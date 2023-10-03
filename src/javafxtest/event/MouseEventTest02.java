@@ -11,7 +11,8 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 //next:p75
 //鼠标的拖拽事件
-//看不懂这一节视频,感觉事件源和,手势源和视频中讲的有些出入
+//看不懂这一节视频,感觉事件源和手势源与视频中讲的有些出入
+//了解拖拽事件执行的顺序就行了吧....
 public class MouseEventTest02 extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -70,12 +71,13 @@ public class MouseEventTest02 extends Application {
             }
         });
 
+        //鼠标的拖拽事件,但只在node内触发
         //setOnMouseDragOver()只有在组件内拖拽才有反应,并且要配合上面的拖拽检测使用
         button2.setOnMouseDragOver(new EventHandler<MouseDragEvent>() {
             @Override
             public void handle(MouseDragEvent event) {
-                //System.out.println(event.getScreenX());
-                //System.out.println(event.getScreenY());
+                System.out.println(event.getScreenX());
+                System.out.println(event.getScreenY());
             }
         });
 
