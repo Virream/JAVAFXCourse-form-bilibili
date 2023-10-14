@@ -44,6 +44,8 @@ public class ListViewTest05 extends Application {
                     //注意:这个方法指定的返回类型是ObservableValue<Boolean>所以返回一个SimpleBooleanProperty
                     return new SimpleBooleanProperty(true);
                 } else if ("B".equals(param.getName())) {
+                    //目前这个状态没法获得,要想获得那么就在Data类型中加入一个SimpleBooleanProperty属性
+                    //然后在每次返回这个值之前设置一下就好
                     return new SimpleBooleanProperty(false);
                 }
                 return new SimpleBooleanProperty(true);
