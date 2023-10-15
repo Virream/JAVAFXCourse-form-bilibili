@@ -83,7 +83,6 @@ public class ListViewTest10 extends Application {
             @Override
             public void handle(ActionEvent event) {
                 observableList.get(0).setName("2S3M");
-                listView.refresh();//对于普通的对象使用刷新即可
                 System.out.println(observableList.get(0).getName());
             }
         });
