@@ -31,7 +31,7 @@ public class TextTest01 extends Application {
         Font font2 = new Font("华文仿宋",25);
         text1.setFont(font2);
 
-        //通过文件加载字体
+        //通过文件加载字体,本类中用到的字体为得意黑和字魂扁桃体
         Text text3 = new Text("hello world");
         File file = new File("file:/res/SmileySans-Oblique.otf");
         //loadFont方法使用url加载字体失败!原因未知
