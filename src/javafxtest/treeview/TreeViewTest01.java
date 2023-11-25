@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 //TreeView的基本使用
+//TreeItem的事件
 public class TreeViewTest01 extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -19,13 +20,15 @@ public class TreeViewTest01 extends Application {
     public void start(Stage primaryStage) throws Exception {
         AnchorPane anchorPane = new AnchorPane();
 
-        //TreeView由根节点和枝叶组成
+        //TreeView由根节点和枝叶节点组成
+        //以下会提到项、项目二词理解成TreeView中的节点即可
         //TreeView<String> treeView = new TreeView<>(根节点);
         TreeView<String> treeView = new TreeView<>();
         //TreeView中的基本单元TreeItem
         TreeItem<String> root = new TreeItem<>("动物");
         //root.setGraphic();//在TreeItem中放一个node(通常是图标)
 
+        //TreeItem不是一个Node,或者说它没有继承Node
         TreeItem<String> ti_dog = new TreeItem<>("狗");
         TreeItem<String> ti_dog_cn = new TreeItem<>("田园犬");
         TreeItem<String> ti_dog_jp = new TreeItem<>("秋田犬");
@@ -66,6 +69,7 @@ public class TreeViewTest01 extends Application {
         System.out.println(ti_dog_jp.getValue() + "的上一个项目是? " + ti_dog_jp.previousSibling());//获取当前层级中本节点的上一个节点(假如root是0级那么,狗、猫、人为1级其余为2级)
         System.out.println(ti_cat.getValue() + "的上一个项目是? " + ti_cat.previousSibling());
         System.out.println(ti_dog_jp.getValue() + "的下一个项目是? " + ti_dog_jp.nextSibling());//获取当前层级中本节点的下一个节点
+        System.out.println(ti_dog_jp.getValue() + "的父节点是? " + ti_dog_jp.getParent());
 
         //选择:和TableView,ListView一样
         treeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);//设置多选
@@ -82,7 +86,7 @@ public class TreeViewTest01 extends Application {
             @Override
             public String toString(String object) {
                 System.out.println(object);//仅会输出已显示的项目,不显示的不会被加载,也就不会输出
-                return object + "-未编辑";//这里好像只会修改显示的数据,不会修改源数据
+                return object + "-动物";//这里好像只会修改显示的数据,不会修改源数据
             }
 
             @Override
@@ -112,5 +116,20 @@ public class TreeViewTest01 extends Application {
         primaryStage.setHeight(800);
         primaryStage.show();
 
+        //TreeItem的事件
+        //第一个参数是具体的事件类型(要监测的事件类型),第二个参数固定(大概固定吧,说实话敲个空格IDE就弹出提示了,我都不理解第二个参数是干嘛的)
+        //对父节点添加监听会对所有子节点生效
+        ti_dog.addEventHandler(TreeItem.<String>valueChangedEvent(), new EventHandler<TreeItem.TreeModificationEvent<String>>() {
+            //TreeItem.<String>valueChangedEvent()  //值被修改时触发
+            //TreeItem.<String>graphicChangedEvent()    //当调用TreeItem对象的setGraphic()方法时生效
+            //TreeItem.<String>branchCollapsedEvent() //收起时触发
+            //TreeItem.<String>branchExpandedEvent() //展开时触发
+            //TreeItem.<String>childrenModificationEvent() //增删改等操作时触发
+            //TreeItem.<String>treeNotificationEvent() //对所有操作的监听
+            @Override
+            public void handle(TreeItem.TreeModificationEvent<String> event) {
+                System.out.println("值被修改 新值: " + event.getNewValue());
+            }
+        });
     }
 }
