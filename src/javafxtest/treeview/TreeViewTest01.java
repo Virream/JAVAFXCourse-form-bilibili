@@ -32,7 +32,7 @@ public class TreeViewTest01 extends Application {
         TreeItem<String> ti_dog = new TreeItem<>("狗");
         TreeItem<String> ti_dog_cn = new TreeItem<>("田园犬");
         TreeItem<String> ti_dog_jp = new TreeItem<>("秋田犬");
-        TreeItem<String> ti_dog_usa = new TreeItem<>("杜宾犬");
+        TreeItem<String> ti_dog_ger = new TreeItem<>("杜宾犬");
 
         TreeItem<String> ti_cat = new TreeItem<>("猫");
         TreeItem<String> ti_cat_cn = new TreeItem<>("狸花猫");
@@ -44,7 +44,7 @@ public class TreeViewTest01 extends Application {
         treeView.setRoot(root);
         //向节点添加子节点
         root.getChildren().addAll(ti_dog,ti_cat,ti_human);
-        ti_dog.getChildren().addAll(ti_dog_cn,ti_dog_jp,ti_dog_usa);
+        ti_dog.getChildren().addAll(ti_dog_cn,ti_dog_jp,ti_dog_ger);
         ti_cat.getChildren().addAll(ti_cat_cn);
         ti_human.getChildren().addAll(ti_human_man,ti_human_woman);
 
