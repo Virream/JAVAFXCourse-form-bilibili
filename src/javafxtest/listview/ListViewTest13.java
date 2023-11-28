@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+//当鼠标指针在单元格上时,使单元格变大(突出显示)
 public class ListViewTest13 extends Application {
     public static void main(String[] args) {
         launch(args);
