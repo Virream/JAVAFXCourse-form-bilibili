@@ -11,13 +11,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import javafx.scene.control.cell.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-//TreeTableView的简单使用
-public class TreeTableViewTest01 extends Application {
+//TreeTableView的内置样式,对加载数据方式的进一步解析
+public class TreeTableViewTest02 extends Application {
     public static void main(String[] args) {
         launch(args);
     }
@@ -25,41 +25,33 @@ public class TreeTableViewTest01 extends Application {
     public void start(Stage primaryStage) throws Exception {
         AnchorPane anchorPane = new AnchorPane();
 
-        DataPropertyForTTV data1 = new DataPropertyForTTV("张一",18,true);
-        DataPropertyForTTV data2 = new DataPropertyForTTV("张二",19,false);
-        DataPropertyForTTV data3 = new DataPropertyForTTV("张三",10,false);
-        DataPropertyForTTV data4 = new DataPropertyForTTV("张四",33,true);
-        DataPropertyForTTV data5 = new DataPropertyForTTV("张五",32,false);
+        DataPropertyForTTV data1 = new DataPropertyForTTV("张一",18,true,0.4);
+        DataPropertyForTTV data2 = new DataPropertyForTTV("张二",19,false,0.1);
+        DataPropertyForTTV data3 = new DataPropertyForTTV("张三",10,false,0.0);
+        DataPropertyForTTV data4 = new DataPropertyForTTV("张四",33,true,0.9);
+        DataPropertyForTTV data5 = new DataPropertyForTTV("张五",32,false,0.2);
 
-        //TreeTableView就是TreeView和TableView的结合体
         TreeTableView<DataPropertyForTTV> treeTableView = new TreeTableView<>();
 
-        //TreeTableView中一行仍是一个TreeItem,一列是一个TreeTableColumn
         TreeItem<DataPropertyForTTV> rootTreeItem = new TreeItem<>(data1);
         TreeItem<DataPropertyForTTV> treeItem1 = new TreeItem<>(data2);
         TreeItem<DataPropertyForTTV> treeItem2 = new TreeItem<>(data3);
         TreeItem<DataPropertyForTTV> treeItem3 = new TreeItem<>(data4);
         TreeItem<DataPropertyForTTV> treeItem4 = new TreeItem<>(data5);
-        rootTreeItem.getChildren().addAll(treeItem1,treeItem2,treeItem3);//设置TreeItem的父子关系
+        rootTreeItem.getChildren().addAll(treeItem1,treeItem2,treeItem3);
         treeItem3.getChildren().addAll(treeItem4);
 
-        treeTableView.setRoot(rootTreeItem);//加载顶级TreeItem
+        treeTableView.setRoot(rootTreeItem);
         TreeTableColumn<DataPropertyForTTV,String> name_ttc = new TreeTableColumn<>("姓名");
         TreeTableColumn<DataPropertyForTTV,Number> age_ttc = new TreeTableColumn<>("年龄");
         TreeTableColumn<DataPropertyForTTV,Boolean> sex_ttc = new TreeTableColumn<>("性别");
-        treeTableView.getColumns().addAll(name_ttc,age_ttc,sex_ttc);//加载列
+        TreeTableColumn<DataPropertyForTTV,Double> score_ttc = new TreeTableColumn<>("分数");
+        treeTableView.getColumns().addAll(name_ttc,age_ttc,sex_ttc,score_ttc);
 
-        //设置列平分View
         treeTableView.setColumnResizePolicy(TreeTableView.CONSTRAINED_RESIZE_POLICY);
-        //设置根节点展开
         rootTreeItem.setExpanded(true);
 
-        //加载数据!!!!!!!!!!!
-        //与反射相关,根据提供的字符串(此处是name)自动寻找"getName()"方法获取值,由于此方法是直接返回的字符串自然被修改时不会触发界面更新,
-        //但是当自定义数据类型中有返回Property属性的名为nameProperty()的方法时会调用此方法而不是调用getName(),这样一来修改数据时界面就可以自动更新了
-        //总结:使用这种简单的加载数据的方法new TreeItemPropertyValueFactory时,会调用自定义数据类型中的方法获取值,类似"属性Property()"的方法的优先级高于
-        //类似"get属性()"的方法的优先级,自定义数据类型中的获取Property属性的方法最好写成"属性Property()"(IDEA一直给我生成的就是这种方法,但我给改
-        //成了"get属性Property()",我当时还在想为什么不带get这样写起来多顺手,IDEA是我没能理解你的好心...;之前好像总结过当两种写法同时存在时的界面更新情况,估计是错的吧)
+        //加载数据
         //name_ttc.setCellValueFactory(new TreeItemPropertyValueFactory<DataPropertyForTTV,String>("name"));
         name_ttc.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<DataPropertyForTTV, String>, ObservableValue<String>>() {
             @Override
@@ -81,6 +73,21 @@ public class TreeTableViewTest01 extends Application {
                 return param.getValue().getValue().getSexProperty();
             }
         });
+        score_ttc.setCellValueFactory(new TreeItemPropertyValueFactory<DataPropertyForTTV,Double>("score"));
+
+        //自定义单元格
+        //启用编辑
+        treeTableView.setEditable(true);
+        //自带编辑实现
+        //name_ttc.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+        //自带数据选择实现(样式1)
+        //name_ttc.setCellFactory(ChoiceBoxTreeTableCell.forTreeTableColumn("A","B"));
+        //自带数据选择实现(样式2)
+        name_ttc.setCellFactory(ComboBoxTreeTableCell.forTreeTableColumn("A","B"));
+        //自带复选框实现
+        sex_ttc.setCellFactory(CheckBoxTreeTableCell.forTreeTableColumn(new TreeTableColumn<DataPropertyForTTV,Boolean>()));
+        //自带进度条实现
+        score_ttc.setCellFactory(ProgressBarTreeTableCell.forTreeTableColumn());
 
         Button button = new Button("修改数据");
         AnchorPane.setRightAnchor(button,0.0);
@@ -95,12 +102,12 @@ public class TreeTableViewTest01 extends Application {
             @Override
             public void handle(ActionEvent event) {
                 data1.setName("ZhangSan");
+                data1.setScore(0.77);
             }
         });
 
         treeTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);//设置多选
         treeTableView.getSelectionModel().setCellSelectionEnabled(true);//启用单元格可选
-        //选择监听
         /*treeTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<DataPropertyForTTV>>() {
             @Override
             public void changed(ObservableValue<? extends TreeItem<DataPropertyForTTV>> observable,
