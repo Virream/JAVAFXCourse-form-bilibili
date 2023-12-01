@@ -34,3 +34,4 @@ bin/
 *.iml
 out
 gen
+/src/temp/
