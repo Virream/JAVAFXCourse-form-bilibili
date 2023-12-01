@@ -185,7 +185,7 @@ class MyTask extends Task<Number> {
             }else if(progress == 1){
                 updateMessage("完成!");
             }
-            Thread.sleep(5);
+            Thread.sleep(3);
         }
 
         //关闭流
