@@ -27,7 +27,7 @@ public class FXMLTest01 extends Application {
         //具体返回的Object到底是什么视FXML文件内容而定,在MyFXML01中AnchorPane上面已经没有嵌套了,所以返回的是AnchorPane对象
         AnchorPane anchorPane = fxmlLoader.load(new FileInputStream("src/javafxtest/fxml/MyFXML01.fxml"));
         //来自评论区:load方法支持泛型
-        var anchorPane2 = fxmlLoader.<Application>load(new FileInputStream("src/javafxtest/fxml/MyFXML01.fxml"));
+        //var anchorPane2 = fxmlLoader.<Application>load(new FileInputStream("src/javafxtest/fxml/MyFXML01.fxml"));
         //使用URL加载记得在文件路径前写上协议
         //AnchorPane anchorPane = fxmlLoader.load(new URL("file:src/javafxtest/fxml/MyFXML01.fxml"));
         //FXMLLoader有获取类加载器的方法,可用于寻找FXML文件获取文件路径
