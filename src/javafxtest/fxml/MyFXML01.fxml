@@ -36,28 +36,3 @@
     </children>
 
 </AnchorPane>
-
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml">
-
-<!--向AnchorPane添加node:先写children标签,表示调用AnchorPane对象的children方法
-    children标签可以省略
--->
-<children>
-    <!--添加一个button-->
-    <!--开始标签中可以设置属性,在在普通的java文件中使用setText()来设置属性text的值改变按钮的名字,这里直接给text属性赋值即可
-        id是一个重要的属性,可以在控制器即java代码写的逻辑中找到fxml中的Node
-    -->
-    <Button id="fxmlButton1" text="按钮" prefHeight="35" prefWidth="45">
-        <!--设置距离anchorPane左边100像素,setLeftAnchor不是Button的方法所以它要放在这里面写(大概是这个原因,我猜的)-->
-        <AnchorPane.leftAnchor>100</AnchorPane.leftAnchor>
-        <AnchorPane.topAnchor>100</AnchorPane.topAnchor>
-    </Button>
-    <!--来自评论区:现在可以直接在开始标签设置Node在布局上的位置了-->
-    <Button id="fxmlButton2" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" prefHeight="35" prefWidth="55">
-        <!--通过这种方式也可以设置按钮的属性,当开始标签中已经设置过了属性,在解析fxml文件时开始标签的优先级比较高,注意不需要再写""-->
-        <text>按钮2</text><!--不建议在这里设置属性,看起来比较乱-->
-    </Button>
-</children>
-
-</AnchorPane>
