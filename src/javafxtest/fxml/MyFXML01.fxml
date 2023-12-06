@@ -9,11 +9,15 @@
 <?import javafx.scene.layout.*?>
 
 <!--和html类似,标签成对组成,一个开始标签一个结束标签
-    xmlns是XML Namespace的缩写即"XML命名空间",命名空间的值通常是网址,因为具有唯一性
+    xmlns是XML Namespace的缩写即"XML命名空间",定义了一个默认的命名空间,命名空间的值通常是网址,因为具有唯一性
+        为什么需要命名空间?假如有两个FXML文件被一起使用里面定义了相同的根节点例如AnchorPane,但是这两个根节点的内容不同
+        那么java编译器是无法区分两者的区别的,这时就需要命名空间来区别二者(大概是这样吧...)
     xmlns:fx="http://javafx.com/fxml"表示定义一个叫fx的命名空间值是http://javafx.com/fxml
+    fx:controller 关联控制器,在此FXML文件被加载时自动创建控制器实例
 -->
 <AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml">
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="javafxtest.fxml.MyController">
 
     <!--向AnchorPane添加node:先写children标签,表示调用AnchorPane对象的children方法
         children标签可以省略
@@ -22,14 +26,17 @@
         <!--添加一个button-->
         <!--开始标签中可以设置属性,在在普通的java文件中使用setText()来设置属性text的值改变按钮的名字,这里直接给text属性赋值即可
             id是一个重要的属性,可以在控制器即java代码写的逻辑中找到fxml中的Node
+            id也可以不加命名空间(目前没有理解命名空间的用处,只知道不加也行,但是多个文件好像会冲突)
         -->
-        <Button id="fxmlButton1" text="按钮" prefHeight="35" prefWidth="45">
+        <Button fx:id="fxmlButton1" text="按钮" prefHeight="35" prefWidth="45">
             <!--设置距离anchorPane左边100像素,setLeftAnchor不是Button的方法所以它要放在这里面写(大概是这个原因,我猜的)-->
             <AnchorPane.leftAnchor>100</AnchorPane.leftAnchor>
             <AnchorPane.topAnchor>100</AnchorPane.topAnchor>
         </Button>
         <!--来自评论区:现在可以直接在开始标签设置Node在布局上的位置了-->
-        <Button id="fxmlButton2" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" prefHeight="35" prefWidth="55">
+        <Button fx:id="fxmlButton2" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" prefHeight="35" prefWidth="55"
+                onAction="#action"><!--这里的onAction="#action"代表的是这个按钮的单击事件的事件id(这么说可能不太准确),#号不可省略
+                #号后是事件id的名字,接下来请看控制器同名方法的注释-->
             <!--通过这种方式也可以设置按钮的属性,当开始标签中已经设置过了属性,在解析fxml文件时开始标签的优先级比较高,注意不需要再写""-->
             <text>按钮2</text><!--不建议在这里设置属性,看起来比较乱-->
         </Button>

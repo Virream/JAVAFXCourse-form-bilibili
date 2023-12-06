@@ -1,6 +1,8 @@
 package javafxtest.fxml;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -40,6 +42,16 @@ public class FXMLTest01 extends Application {
         //id重名会只返回找得的第一个
         Button button1 = (Button) anchorPane.lookup("#fxmlButton1");
         System.out.println(button1.getText());
+
+        //返回控制器对象
+        MyController myController = fxmlLoader.getController();
+        //有了控制器对象就可以获得里面的成员对其进行操作,例如覆盖初始化时的监听
+        myController.getFxmlButton2().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("main onAction");
+            }
+        });
 
         Scene scene = new Scene(anchorPane);
         primaryStage.setScene(scene);
