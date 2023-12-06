@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 //好像和FXML文件有关的成员都需要@FXML注解
 public class MyController {
     //当FXML文件已关联此类为控制器,且FXML文件中的标签的id和这里的Node的名字一样
-    //在使用这个FXML文件时会将FXML中定义的Node对象赋值给此对象,此外注解是必须的
+    //在使用这个FXML文件时会将FXML中定义的Node对象赋值给本类的此对象,此外注解是必须的
     @FXML
     private Button fxmlButton1;
     @FXML
