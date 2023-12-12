@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafxtest.fxml.Person?>
+<!--此标签被实例化时的调用是这样的:
+    PersonBuilderFactory的getBuild被调用
+    PersonBuilder的setName被调用
+    PersonBuilder的setAge被调用
+    PersonBuilder的build被调用
+    Person的有参构造被调用
+
+    由于并不是直接调用Person的构造器,假如在Person标签中不写属性那么PersonBuilder中的属性默认值会被作为构造Person的参数传入
+-->
+<Person name="ZhangSan" age="13"></Person>

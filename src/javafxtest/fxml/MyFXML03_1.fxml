@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafxtest.fxml.Person?>
+<!--虽然报红了但是不影响运行,不知道算不算是IDEA的BUG或者别的什么...(个人感觉ArrayList确实不该出现在这里)
+NewBing是这样解释此问题的:
+在FXML文件中，"Parent tag has no default property"的错误通常是由于FXML文件中的某个元素没有默认的属性来接收内嵌的元素。
+在你的MyFXML03_1.fxml文件中，你试图将多个Person对象直接添加到ArrayList中，但是ArrayList没有默认的属性来接收这些Person对象。
+
+在JavaFX中，FXML文件通常用于描述用户界面，其中的元素通常对应于具有可视化表示的对象，
+如按钮、标签和面板。这些对象通常有默认的属性（如子项或内容），可以接收内嵌的元素。
+然而，ArrayList是一个普通的Java类，没有这样的默认属性。
+
+如果你想在FXML文件中描述一个包含多个Person对象的列表，你可能需要创建一个新的类，
+该类有一个可以接收Person对象的属性。例如，你可以创建一个PersonList类，如下所示：
+
+package javafxtest.fxml;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+public class PersonList {
+    private ObservableList<Person> persons = FXCollections.observableArrayList();
+
+    public ObservableList<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(ObservableList<Person> persons) {
+        this.persons = persons;
+    }
+}
+然后，你可以在FXML文件中使用这个新类，如下所示：
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafxtest.fxml.Person?>
+<?import javafxtest.fxml.PersonList?>
+
+<PersonList>
+    <persons>
+        <Person name="a" age="11"/>
+        <Person name="b" age="21"/>
+        <Person name="c" age="31"/>
+    </persons>
+</PersonList>
+这样，Person对象就会被添加到PersonList的persons属性中，而不是直接添加到ArrayList中。
+
+虽然放进去确实不出错了但是取出来就有问题了,只能再研究研究了
+-->
+<ArrayList>
+    <Person name="a" age="11"/>
+    <Person name="b" age="21"/>
+    <Person name="c" age="31"/>
+</ArrayList>

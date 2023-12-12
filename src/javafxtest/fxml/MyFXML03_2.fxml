@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafxtest.fxml.Person?>
+<?import javafxtest.fxml.PersonList?>
+
+<PersonList>
+    <persons>
+        <Person name="a" age="11"/>
+        <Person name="b" age="21"/>
+        <Person name="c" age="31"/>
+    </persons>
+</PersonList>
