@@ -48,13 +48,12 @@ public class FXMLTest03 extends Application {
         FXMLLoader fxmlLoader3 = new FXMLLoader();
         fxmlLoader3.setLocation(new URL("file:src/javafxtest/fxml/MyFXML03_2.fxml"));
         fxmlLoader3.setBuilderFactory(new PersonBuilderFactory());
-        fxmlLoader3.load();
-        ObservableList<Person> observableList = FXCollections.observableArrayList();
+        PersonList personList = fxmlLoader3.load();
 
-        for(Person p : observableList) {
-            System.out.println(p.getName());
+        for(Object p : personList.getPersons()) {
+            Person per = (Person)p; 
+            System.out.println(per.getName());
         }
-
 
         primaryStage.setHeight(660);
         primaryStage.setWidth(660);

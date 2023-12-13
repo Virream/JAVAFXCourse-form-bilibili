@@ -10,8 +10,10 @@ public class PersonBuilderMapFactory implements BuilderFactory {
     public Builder<?> getBuilder(Class<?> type) {
         System.out.println("PersonBuilderMapFactory的getBuild被调用");
         if(type == Person.class){
+            System.out.println("return new PersonBuilderMap();" );
             return new PersonBuilderMap();
         }else{
+            System.out.println("return javaFXBuilderFactory.getBuilder(type);");
             return javaFXBuilderFactory.getBuilder(type);
         }
     }

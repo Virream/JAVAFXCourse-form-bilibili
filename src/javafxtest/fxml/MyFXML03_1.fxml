@@ -49,7 +49,8 @@ public class PersonList {
 </PersonList>
 这样，Person对象就会被添加到PersonList的persons属性中，而不是直接添加到ArrayList中。
 
-虽然放进去确实不出错了但是取出来就有问题了,只能再研究研究了
+如果直接使用上面的fxml虽然放进去确实不出错了但是只是不能load()会报错,假如改成现在的MyFXML03_2文件的fxml代码load不报错了
+但是另一个标签会报错,但只要把PersonList的ObservableList的泛型去掉即可,但这在使用时似乎会又会带来麻烦
 -->
 <ArrayList>
     <Person name="a" age="11"/>

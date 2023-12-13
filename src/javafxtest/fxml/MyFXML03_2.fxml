@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafxtest.fxml.Person?>
 <?import javafxtest.fxml.PersonList?>
-
-<PersonList>
+<?import javafx.collections.FXCollections?>
+<PersonList xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml">
     <persons>
-        <Person name="a" age="11"/>
-        <Person name="b" age="21"/>
-        <Person name="c" age="31"/>
+        <FXCollections fx:factory="observableArrayList">
+            <Person name="a" age="11"/>
+            <Person name="b" age="21"/>
+            <Person name="c" age="31"/>
+        </FXCollections>
     </persons>
 </PersonList>

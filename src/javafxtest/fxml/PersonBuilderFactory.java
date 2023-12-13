@@ -10,9 +10,11 @@ public class PersonBuilderFactory implements BuilderFactory {
     public Builder<?> getBuilder(Class<?> type) {
         System.out.println("PersonBuilderFactory的getBuild被调用");
         if(type == Person.class){
+            System.out.println("return new PersonBuilder();" + "type=" + type.getTypeName());
             return new PersonBuilder();
         }else{
-            return javaFXBuilderFactory.getBuilder(type);
+            System.out.println("return javaFXBuilderFactory.getBuilder(type);" + "type=" + type.getTypeName());
+            return javaFXBuilderFactory.getBuilder(type);//返回type类型的构造器
         }
     }
 }
