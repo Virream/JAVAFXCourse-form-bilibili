@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<!--
+    <fx:define><fx:reference><fx:include>$符号的使用,属性绑定
+-->
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="400.0" prefWidth="600.0">
+    <!--在fx:define中定义的标签生成的对象不会被包含在此fxml文件的根节点,在此处定义的对象最好带上id
+        此处定义的对象用于配合下面的标签使用,例如下面的RadioButton按钮需要一个ToggleGroup
+        而ToggleGroup并不是能显示在屏幕上的node,此处在fx:define中定义的对象可以通过fx:reference引用
+    -->
+    <fx:define>
+
+        <!--RadioButton的组对象-->
+        <ToggleGroup fx:id="g1"/>
+        <!--样式对象-->
+        <Insets fx:id="insets1" top="10" left="10" right="10" bottom="10"/>
+        <!--定义一个button-->
+        <Button fx:id="db" text="defineButton"/>
+
+    </fx:define>
+    <HBox prefWidth="500" prefHeight="300">
+        <!--单选按钮,需要设置一个组中,组内的按钮只能有一个被选择
+            $符号用于代表引用一个id
+        -->
+        <RadioButton text="r1" toggleGroup="$g1"/>
+        <RadioButton text="r2" toggleGroup="$g1"/>
+        <RadioButton text="r3" toggleGroup="$g1"/>
+
+        <!--在界面中将看到b1按钮和其他元素上下左右各向里10像素-->
+        <Button text="b1" HBox.margin="$insets1"/>
+        <!--使用fx:reference来引用上面的对象在当前的根节点(HBox)创建一个Button
+            注意此button对象只能被引用一次,似乎所有的Node都只能被引用一次
+            很迷惑,这里居然不需要使用$符号,source=""的作用好像就是$符号的作用-->
+        <fx:reference source="db"/>
+        <!--引用另一个FXML文件中的内容(可以多次引用同一个文件)-->
+        <fx:include source="MyFXML04_1.fxml"/>
+    </HBox>
+
+    <!--属性绑定(单向) 将button2的宽绑定在button1的宽上-->
+    <Button text="button1" fx:id="b1" AnchorPane.topAnchor="100" prefWidth="160"/>
+    <Button text="button2" AnchorPane.topAnchor="120" prefWidth="${b1.prefWidth}"/>
+
+</AnchorPane>
