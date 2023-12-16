@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="400.0" prefWidth="600.0"
+            fx:controller="javafxtest.fxml.MyController03">
+    <!--%key表示使用配置文件(properties)中的key对应的值,使用的配置文件会根据系统当前语言而改变,从而改变最终呈现在界面上的文字-->
+    <Button text="%buttonText" />
+    <TextField text="%textFieldText" AnchorPane.leftAnchor="50"/>
+</AnchorPane>
