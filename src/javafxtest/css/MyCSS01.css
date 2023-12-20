@@ -1,0 +1,48 @@
+/*  IDEA社区版没有对JavaFX的CSS的支持写起来有点痛苦
+    装上插件还算能用(Ilya Rodionov的WebCalm: JavaScript and CSS和LeeWyatt的JavaFX Tools),虽然仍然没有代码提示
+    第一个插件会报错,但是似乎没有影响
+    官方css手册 https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/doc-files/cssref.html
+*/
+#root{/* id选择器,根据id来判断此段css属于哪个node,假如此css文件是给根节点设置的那么可以找到根节点下的所有子node的id*/
+    -fx-background-color:radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.0% 50.0%, radius 50.0%, #000000ff 0.0%, #ffffffff 100.0%);
+    -fx-border-color:#32cd32
+}
+#button0{
+    -fx-background-color:#1a2c3d
+}
+/*  满足某个条件时时改变样式(术语叫伪类)
+    disabled    禁用时触发
+    focused     聚焦时触发
+    hover       鼠标在上时触发
+    pressed     按下时触发
+    show-mnemonic   ?看不懂,原文:apples when the mnemonic affordance (typically an underscore) should be shown.
+*/
+#button0:hover{
+    -fx-background-color:#1389ee
+}
+/*  类选择器,只要是这个类都是这个样式,类名小写如果类名是多个单词拼接的要用-符号
+    (我现在没搞懂假如有多个大写字母我应不应该在每个大写字母前都加-)*/
+.label{
+    -fx-background-color:#00ffff
+}
+.text-field{
+    -fx-background-color:#1a2c3d00;
+    -fx-border-width:0 0 1 0;
+    -fx-border-color:rgb(120,120,120)
+}
+/*  自定义的css选择器,需要配合代码手动加载 */
+.my_css{
+    -fx-background-color:#00c90c
+}
+/* 定义listView的样式*/
+#fxmlListView{
+    -fx-background-color:#ff0000;
+    -fx-border-width:2 2 1 1;
+}
+/*对奇数和偶数单元格定义,在我看来这语法有点奇怪.前面要有空格*/
+#fxmlListView .list-cell:odd{
+    -fx-background-color:#f19a9a;
+}
+#fxmlListView .list-cell:even{
+    -fx-background-color:#91a4ec;
+}

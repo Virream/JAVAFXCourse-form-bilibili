@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<?import java.lang.String?>
+<VBox prefHeight="400.0" prefWidth="321.0" spacing="20"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1">
+   <style>-fx-background-color:#008b8b;
+         -fx-border-color:#32cd32
+   </style>
+   <children>
+      <!--在fxml文件中设置css样式-->
+      <Button id="fxmlButton" text="button" style="-fx-background-color:#ff4500"/>
+      <Label text="Label" />
+      <TextField text="TextField"/>
+      <ListView id="fxmlListView" prefHeight="200.0" prefWidth="200.0">
+         <String fx:value="s1"/>
+         <String fx:value="s2"/>
+         <String fx:value="s3"/>
+         <String fx:value="s4"/>
+      </ListView>
+   </children>
+</VBox>
