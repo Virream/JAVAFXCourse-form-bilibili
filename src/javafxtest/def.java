@@ -14,8 +14,7 @@ public class def extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         AnchorPane anchorPane = new AnchorPane();
-        anchorPane.setStyle("-fx-background-color:#101010");
-
+        anchorPane.setStyle("-fx-background-color:#ffffff");
 
         Scene scene = new Scene(anchorPane);
         primaryStage.setScene(scene);
