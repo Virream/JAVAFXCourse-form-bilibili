@@ -36,7 +36,7 @@ public class TranslateTest01 extends Application {
         button2.setPrefHeight(80);
         button2.setPrefWidth(80);
         Translate translate = new Translate(80,80);//代表平移
-        button2.getTransforms().addAll(translate);//将平移操作添加到button2的Transforms列表中,这个列表中的仿射变换会在某个时机进行计算
+        button2.getTransforms().addAll(translate);//将平移操作添加到button2的Transforms列表中
         //定义为布局目的而添加到节点变换中的平移 x 坐标。该值应计算为将节点的位置从其当前 layoutBounds minX 位置（可能不是 0）调整到所需位置所需的偏移量。
         //原文:Defines the x coordinate of the translation that is added to this Node's transform for the purpose of layout.
         // The value should be computed as the offset required to adjust the position of the node from its current
