@@ -9,8 +9,8 @@
 	        请点击Run->Edit Configurations->Edit Configurations Templates->Application->Modify Options->Add VM options
             然后在第二行即VM options这一行中输入:
             --module-path "D:\Java\javafx-sdk-17.0.7\lib" --add-modules=javafx.controls,javafx.fxml
-             (其中""符号内是你的JavaFXSDK的lib路径)然后请将Run->Edit Configurations->Application中的虚拟机配置删除.
-             (此配置优先级较高但需要一个类配置一遍比较麻烦)在你删除后,每次你启动java类便会自动配置虚拟机参数.
+             (其中""符号内是你的JavaFXSDK的lib路径)然后请将Run->Edit Configurations->Application中的虚拟机配置删除(此配置优先级较高但需要一个类配置一遍比较麻烦)
+             在你删除后,每次你启动java类便会自动配置虚拟机参数.
              至于第一行的选择java版本这一项,无论是选其中的第一个选项: java版本名 '你的项目的名称' module 又或者是
              Bundled下面的你当前在本工程中用的java版本好像没区别.
 

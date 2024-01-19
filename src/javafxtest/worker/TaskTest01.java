@@ -176,7 +176,7 @@ class MyTask extends Task<Number> {
             this.updateProgress(readByteCount,fileSize);
 
             //打印进度
-            System.out.println(progress);
+            //System.out.println(progress);
 
             if(progress < 0.7){
                 this.updateMessage("请耐心等待...");
