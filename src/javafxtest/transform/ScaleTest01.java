@@ -33,6 +33,7 @@ public class ScaleTest01 extends Application {
         anchorPane.getChildren().addAll(button1,button2);
 
         //x轴缩放比例,y轴缩放比例,缩放支点x,缩放支点y(参考系是node自身坐标系)
+        //假如缩放系数为负数将会使得node的图像颠倒
         //x,y轴缩放50%支点为node自身坐标系中的X:20 Y:20
         Scale scale = new Scale(0.5,0.5,20,20);//在缩放时支点两边都会被缩小50%
         button2.getTransforms().addAll(scale);
