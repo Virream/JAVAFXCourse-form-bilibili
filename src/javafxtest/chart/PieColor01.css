@@ -1,0 +1,12 @@
+/*-fx-pie-color: 设置背景颜色
+-fx-background-image: url() 设置背景图片
+.data0代表表中第1个扇形
+
+更多css样式请详情css手册Charts项目
+*/
+.chart-pie.data1{
+    -fx-pie-color: #ff0000
+}
+.chart-pie.data2{
+    -fx-pie-color: #000000
+}
